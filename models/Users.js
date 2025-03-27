@@ -15,6 +15,11 @@ userSchema.statics.hashPassword = (clearPasword) => {
     return bcrypt.hash(clearPasword, 7)
 }
 
+// metodo de las instancias de usuario
+userSchema.methods.comparePassword = function (clearPasword) {
+    return bcrypt.compare(clearPasword, this.password)
+}
+
 // crear modelo de Usuarios
 const User = mongoose.model('User', userSchema)
 

@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 // definir el esquema de los Productos
 const productSchema = new mongoose.Schema({
     name: String,
+    owner: String,
     price: Number,
     image: String,
     tags: [String]
