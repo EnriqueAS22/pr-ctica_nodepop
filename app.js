@@ -31,7 +31,9 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.get('/logout', loginController.logout)
-app.get('/products/new', productsController.index)
+app.get('/products/new', sessionManager.guard, productsController.index)
+app.post('/products/new', sessionManager.guard, productsController.postNew)
+app.get('/products/delete/:productId', sessionManager.guard, productsController.deleteProduct)
 //app.post('/tags_products', homeController.tagsProducts)
 
 export default app

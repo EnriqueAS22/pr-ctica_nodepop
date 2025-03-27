@@ -9,6 +9,7 @@ export function index(req, res, next) {
 export async function postLogin(req, res, next) {
     try {
         const { email, password } = req.body
+        const redir = req.query.redir
     
         // buscar usuario en base de datos
         const user = await User.findOne({ email: email })
@@ -24,7 +25,7 @@ export async function postLogin(req, res, next) {
         // si es bueno todo -> redirect a la Home estando Logado
         req.session.userId = user.id
 
-        res.redirect('/')
+        res.redirect(redir ? redir: '/')
 
     } catch (error) {
         next(error)

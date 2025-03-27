@@ -1,9 +1,9 @@
-import mongoose from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 // definir el esquema de los Productos
 const productSchema = new mongoose.Schema({
     name: String,
-    owner: String,
+    owner: { type: Schema.Types.ObjectId, ref: 'User', index: true },
     price: Number,
     image: String,
     tags: [String]
