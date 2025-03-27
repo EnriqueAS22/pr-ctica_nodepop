@@ -1,16 +1,20 @@
 <%- include('header.html') %>
 
-<p>User ID: <%= session.userId %></p>
+<p class="text-center">User ID: <%= session.userId %></p>
 
 <body>
     <% if (!session.userId) { %>
-        <p><a href="/login">Login</a> to acces your products</p>
+        <p class="text-center"><a href="/login">Login</a> to acces your products</p>
     <% } else { %>
-        <h2>Products</h2>
+        <h2 class="container px-4 text-center">Products</h2>
         <% products.forEach(product => { %>
-            <p><%= product.name %> // <%= product.owner %> // <%= product.price %>€ // <%= product.image %> // <%= product.tags %>
-            <a href="products/delete/<%= product._id %>"><i class="bi bi-trash3-fill"></i></a>
-            </p>
+            <div class="container px-4 text-center">
+                <h5><%= product.name %></h2>
+                <p><%= product.owner %></p>
+                <p><%= product.price %>€</p>
+                <p>Tags: <%= product.tags %></p>
+                <a href="products/delete/<%= product._id %>"><i class="bi bi-trash3-fill"></i></a>
+            </div>
         <% }) %>
     <% } %>
     

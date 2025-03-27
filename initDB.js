@@ -10,7 +10,7 @@ const connection = await connectMongoose()
 console.log('Connected to MongoDB:', connection.name)
 
 /**
- * PROGUNTA initDB
+ * PREGUNTA initDB
  */
 const answer = await ask('Are you sure you want to delete database collection? (n)')
 if (answer !== 'y') {
@@ -22,7 +22,6 @@ if (answer !== 'y') {
  * INIT
  */
 await initUsers()
-await initProducts()
 await connection.close()
 
 /**
@@ -32,27 +31,13 @@ async function initUsers() {
     const result = await User.deleteMany()
     console.log(`Deleted ${result.deletedCount} users.`)
 
-    const insertResult = await User.insertMany(
-        { email: 'paco@usuario.com', password: await User.hashPassword('1234') }
-    )
-    console.log(`Insert ${insertResult.length} users.`)
-}
-
-/**
- * PRODUCTOS
- */
-async function initProducts() {
-    const result = await Product.deleteMany()
-    console.log(`Deleted ${result.deletedCount} products.`)
-
-    const [paco] = await Promise.all([
-        User.findOne({ email: 'paco@usuario.com' })
+    const insertResult = await User.insertMany([
+        { email: 'paco@usuario.com', password: await User.hashPassword('1234') },
+        { email: 'kike@usuario.com', password: await User.hashPassword('2345') },
+        { email: 'manu@usuario.com', password: await User.hashPassword('3456') }
     ])
-
-    const insertResult = await Product.insertMany(
-        { name: 'Seat 500', owner: paco._id , price: 3000, image: 'https://images.milanuncios.com/api/v1/ma-ad-media-pro/images/85ca4b51-1aff-4e07-acaa-1e925d446634?rule=hw396_70', tags: ['motor']}
-    )
-    console.log(`Insert ${insertResult.length} products.`)
+    
+    console.log(`Insert ${insertResult.length} users.`)
 }
 
 /**
