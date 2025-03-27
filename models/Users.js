@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     collection: 'users'
 })
 
-//metodo del modelo
+// metodo del modelo
 userSchema.statics.hashPassword = (clearPasword) => {
     return bcrypt.hash(clearPasword, 7)
 }
