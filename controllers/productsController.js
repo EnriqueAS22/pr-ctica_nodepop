@@ -6,9 +6,8 @@ export function index(req, res, next) {
 
 export async function postNew(req, res, next) {
     try {
-        const { name, owner, price, image, tags } = req.body
+        const { name, price, image, tags } = req.body
         const userId = req.session.userId
-
         const product = new Product({ name, owner: userId , price, image, tags })
         await product.save()
         res.redirect('/')

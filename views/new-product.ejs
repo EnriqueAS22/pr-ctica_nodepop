@@ -1,4 +1,4 @@
-<%- include('header.html') %>
+<%- include('header.ejs') %>
 
 <div class="container">
     <h1>New Product</h1>
@@ -15,8 +15,8 @@
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">Image</label>
-          <input class="form-control" name="image" type="file" id="formFile">
+          <label for="image" class="form-label">Select an image</label>
+          <input class="form-control" name="image" type="file" id="image" accept="image/*">
         </div>
 
         <div class="form-check form-check-inline">

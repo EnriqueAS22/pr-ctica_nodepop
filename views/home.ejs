@@ -1,4 +1,4 @@
-<%- include('header.html') %>
+<%- include('header.ejs') %>
 
 <p class="text-center">User ID: <%= session.userId %></p>
 
@@ -9,11 +9,11 @@
         <h2 class="container px-4 text-center">Products</h2>
         <% products.forEach(product => { %>
             <div class="container px-4 text-center border rounded p-3 my-3">
-                <img src="<%= product.image %>" class="img-thumbnail" alt="<%= product.image %>">
-                <h5><%= product.name %></h5>
+                <img src="/images/<%= product.image %>" class="img-thumbnail rounded w-25" alt="<%= product.image %>">
                 <p><%= product.owner %></p>
+                <h5><%= product.name %></h5>
                 <p><%= product.price %>€</p>
-                <p>Tags: <%= product.tags.join(", ") %></p>
+                <p><%= product.tags.join(", ") %></p>
                 <a href="/products/delete/<%= product._id %>"  class="text-danger">
                     <i class="bi bi-trash3-fill"></i>
                 </a>

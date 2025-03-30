@@ -11,10 +11,8 @@ export async function postLogin(req, res, next) {
         const { email, password } = req.body
         const redir = req.query.redir
     
-        // buscar usuario en base de datos
         const user = await User.findOne({ email: email })
     
-        // si no encuentro o no es la contraseña, devuelve Error
         if (!user || !(await user.comparePassword(password))) {
             res.locals.error = 'Invalid credentials'
             res.locals.email = email
@@ -22,7 +20,6 @@ export async function postLogin(req, res, next) {
             return
         }
     
-        // si es bueno todo -> redirect a la Home estando Logado
         req.session.userId = user.id
 
         res.redirect(redir ? redir: '/')

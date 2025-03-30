@@ -40,6 +40,9 @@ async function initUsers() {
     console.log(`Insert ${insertResult.length} users.`)
 }
 
+/**
+ * PRODUCTOS
+ */
 async function initProducts() {
 	const result = await Product.deleteMany()
 	console.log(`${result.deletedCount} products deleted`)
@@ -98,6 +101,27 @@ async function initProducts() {
 			price : 20,
 			image : "SE_Xperia.jpg",
 			tags : [ "Mobile" ]
+		},
+		{
+			name : "SEAT 500",
+			owner: kike._id,
+			price : 20,
+			image : "SEAT_500.jpg",
+			tags : [ "Motor" ]
+		},
+		{
+			name : "Nintendo Switch",
+			owner: paco._id,
+			price : 20,
+			image : "Switch.jpg",
+			tags : [ "Lifestyle" ]
+		},
+		{
+			name : "XBOX",
+			owner: paco._id,
+			price : 20,
+			image : "XBOX.jpg",
+			tags : [ "Lifestyle" ]
 		}
 	])
 	console.log(`Insert ${insertResult.length} products.`)
