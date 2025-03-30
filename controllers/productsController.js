@@ -4,6 +4,9 @@ export function index(req, res, next) {
     res.render('new-product')
 }
 
+/**
+ * NEW PRODUCT 
+ */
 export async function postNew(req, res, next) {
     try {
         const { name, price, image, tags } = req.body
@@ -16,6 +19,9 @@ export async function postNew(req, res, next) {
     }
 }
 
+/**
+ * DELETE PRODUCT
+ */
 export async function deleteProduct(req, res, next) {
     try {
         const userId = req.session.userId

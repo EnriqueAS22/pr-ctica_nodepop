@@ -3,7 +3,9 @@ import app from './app.js'
 
 const port = process.env.PORT || 3000
 
-// create http server 
+/**
+ * CREATE HTTP SERVER
+ */
 const server = http.createServer(app)
 
 server.on('error', err => console.log(err))

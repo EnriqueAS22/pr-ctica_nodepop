@@ -6,6 +6,9 @@ export function index(req, res, next) {
     res.render('login')
 }
 
+/**
+ * LOGIN
+ */
 export async function postLogin(req, res, next) {
     try {
         const { email, password } = req.body
@@ -29,6 +32,9 @@ export async function postLogin(req, res, next) {
     }
 }
 
+/**
+ * LOGOUT
+ */
 export function logout(req, res, next) {
     req.session.regenerate(err => {
         if (err) {

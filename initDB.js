@@ -4,13 +4,13 @@ import Product from './models/Products.js'
 import User from './models/Users.js'
 
 /**
- * CONEXION MONGO
+ * CONECTION WITH MONGODB
  */
 const connection = await connectMongoose()
 console.log('Connected to MongoDB:', connection.name)
 
 /**
- * PREGUNTA initDB
+ * initDB QUESTION
  */
 const answer = await ask('Are you sure you want to delete database collection? (n)')
 if (answer !== 'y') {
@@ -26,7 +26,7 @@ await initProducts()
 await connection.close()
 
 /**
- * USUARIOS
+ * USERS
  */
 async function initUsers() {
     const result = await User.deleteMany()
@@ -41,7 +41,7 @@ async function initUsers() {
 }
 
 /**
- * PRODUCTOS
+ * PRODUCTS
  */
 async function initProducts() {
 	const result = await Product.deleteMany()
@@ -128,7 +128,7 @@ async function initProducts() {
 }
 
 /**
- * PREGUNTA initDB
+ * initDB 
  */
 async function ask(question) {
     const rl = readline.createInterface({
